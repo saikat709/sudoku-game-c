@@ -21,7 +21,7 @@ g++ *.cpp && ./a.out
 ```
 
 ### Samples
-![]()
+![ss1](https://raw.githubusercontent.com/saikat709/sudoku-game-c/refs/heads/main/images/ss1.png)
 
 
 ## Gui Game using sdl
