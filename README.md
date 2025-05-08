@@ -6,7 +6,8 @@ We can use either gcc or g++ for a .c file.  must use g++ to compile .cpp code..
 ```bash
 g++ solve-sudoku.cpp && ./a.out
 g++ check-terminal-command.c && ./a.out
-g++ sudoku-generator.cpp && ./a.out
+g++ sudoku-generator.cpp && ./a.out.
+gcc check/check-coloring-output.c && ./a.out
 
 ```
 
@@ -18,6 +19,9 @@ g++ main.cpp sudoku.cpp && ./a.out
 g++ *.cpp && ./a.out
 
 ```
+
+### Samples
+![]()
 
 
 ## Gui Game using sdl

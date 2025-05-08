@@ -51,6 +51,7 @@ bool sudokuSolver(vector<vector<int>>& mat){
     return helper(mat, 0, 0);
 }
 
+
 int main() {
     vector<vector<int>> mat = {
         {3, 0, 6, 5, 0, 8, 4, 0, 0}, 
