@@ -5,6 +5,7 @@
 #define SIZE 9
 using namespace std;
 typedef vector<vector<int>> vvi;
+#define vvb vector<vector<bool>>
 typedef vector<int> vi;
 
 bool isSafe(vvi mat, int row, int col, int num){
@@ -33,7 +34,7 @@ void randomShuffle(vi& nums){
 }
 
 
-void removeCells(vvi& solved, vvi& unSolved, int count) {
+void removeCells(vvi& solved, vvi& unSolved, vvb& isCellPregiven, int count) {
     static random_device rd;
     static mt19937 gen(rd());
     uniform_int_distribution<> dist(0, SIZE - 1);
@@ -49,6 +50,7 @@ void removeCells(vvi& solved, vvi& unSolved, int count) {
         int col = dist(gen);
         if (unSolved[row][col] != 0) {
             unSolved[row][col] = 0;
+            isCellPregiven[row][col] = false;
             count--;
         }
     }
