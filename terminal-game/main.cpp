@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <ctime>
+
 
 #define SIZE 9
 #define REMOVE_CELLS 40
@@ -41,6 +43,7 @@ vvi solvedGrid( SIZE,  vector<int>(SIZE, 0));
 vvi unsolvedGrid(SIZE, vector<int>(SIZE, 0));
 vvi userSolution(SIZE, vector<int>(SIZE, 0));
 vvb isCellPregiven(SIZE, vector<bool>(SIZE, true));
+bool isSudokuComplete(vvi& grid);
 stack<UserMove> moves;
 
 // sudoku methods
@@ -187,9 +190,14 @@ void printSudokuGrid(vvi grid){
 
 
 void startGame(){ 
+
+    time_t startTime = time(0);
+
     while( true ){
         clearScreen();
         printSudokuGrid(unsolvedGrid);
+        time_t currentTime = time(0);
+        cout << "Time elapsed: " << difftime(currentTime, startTime) << " seconds\n";
         UserMove userInput = getUserInput();
 
         if ( userInput.row == -1 ){
@@ -208,13 +216,27 @@ void startGame(){
             unsolvedGrid[userInput.row-1][userInput.col-1] = userInput.value;
             moves.push(userInput);
             printSudokuGrid(unsolvedGrid);
-        }
-        else {
+        } else {
             cout << RED << "Invalid move. Try again.\n" << DEFAULT;
+        }
+
+        if ( isSudokuComplete(unsolvedGrid) ){
+            cout << GREEN << "Congratulations! You have completed the Sudoku.\n" << DEFAULT
+            cout << CYAN << "Do you want to play again? (Y/N): " << DEFAULT;
+            char choice;
+            cin >> choice;
+            if ( choice == 'Y' || choice == 'y' ){
+                cout << GREEN << "Starting new game...\n" << DEFAULT;
+                beforeGame();
+                break;
+            } else {
+                cout << "Thanks for playing.\n";
+                break;
+            }
+            break;
         }
     }
     cout << "Game over.\n";
-    cout << "Thanks for playing.\n";
     cout << "Exiting game.\n";
     clearScreen();
 }
