@@ -10,15 +10,19 @@ typedef vector<int> vi;
 
 bool isSafe(vvi mat, int row, int col, int num){
     for (int i = 0; i < 9; i++){
-        if (mat[row][i] == num || mat[i][col] == num ){
+       if ( i != col && mat[row][i] == num ){
+            return false;
+        }
+        if ( i != row && mat[i][col] == num ){
             return false;
         }
     }
 
     int startRow = row - row % 3, startCol = col - col % 3;
-    for( int row = 0; row < 3; row++ ){
-        for( int col = 0; col < 3; col++ ){
-            if ( mat[row + startRow][col + startCol] == num ){
+    for( int i = 0; i < 3; i++ ){
+        for( int j = 0; j < 3; j++ ){
+            if ( i == row && col == j ) continue;
+            if ( mat[i + startRow][j + startCol] == num ){
                 return false;
             }
         }
@@ -38,7 +42,7 @@ void randomShuffle(vi& nums){
 bool isSudokuComplete(vvi& grid) {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            if ( !isSafe grid[i][j] == 0) {
+            if ( grid[i][j] == 0) {
                 return false;
             }
         }

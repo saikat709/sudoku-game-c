@@ -5,7 +5,7 @@
 
 
 #define SIZE 9
-#define REMOVE_CELLS 40
+#define REMOVE_CELLS 45
 
 #ifdef _WIN32
   #define CLEAR "cls"
@@ -44,6 +44,15 @@ vvi unsolvedGrid(SIZE, vector<int>(SIZE, 0));
 vvi userSolution(SIZE, vector<int>(SIZE, 0));
 vvb isCellPregiven(SIZE, vector<bool>(SIZE, true));
 bool isSudokuComplete(vvi& grid);
+
+
+void initGame();
+void beforeGame();
+void startGame();
+void undoMove();
+void clearScreen();
+void printSudokuGrid(vvi grid);
+
 stack<UserMove> moves;
 
 // sudoku methods
@@ -104,17 +113,9 @@ UserMove getUserInput(){
 
     if ( unsolvedGrid[userInput.row-1][userInput.col-1] != 0 ){
         cout << YELLOW << "THE GRID ALREADY HAS A VALUE. Want to change?( Y/N )" << DEFAULT;
-        bool change;
+        char change;
         cin >> change;
-        if ( change == 'Y' || change == 'y' ){
-            cout << "Enter new value: ";
-            cin >> userInput.value;
-            while( userInput.value < 1 || userInput.value > SIZE ){
-                cout << RED << "Please enter a valid row number: " << DEFAULT;
-                cin >> userInput.row;
-            }
-        }
-        else {
+        if (  !( change == 'Y' || change == 'y' )  ){
             cout << RED << "Please enter a valid cell.\n" << DEFAULT;
             return getUserInput();
         }
@@ -221,7 +222,9 @@ void startGame(){
         }
 
         if ( isSudokuComplete(unsolvedGrid) ){
-            cout << GREEN << "Congratulations! You have completed the Sudoku.\n" << DEFAULT
+            clearScreen();
+            cout << GREEN << "Congratulations! You have completed the Sudoku.\n" << DEFAULT;
+            cout << "Time taken: " << difftime(currentTime, startTime) << " seconds\n\n";
             cout << CYAN << "Do you want to play again? (Y/N): " << DEFAULT;
             char choice;
             cin >> choice;
