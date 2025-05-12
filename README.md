@@ -22,23 +22,3 @@ g++ *.cpp && ./a.out
 
 ### Samples
 ![ss1](https://raw.githubusercontent.com/saikat709/sudoku-game-c/refs/heads/main/images/ss1.png)
-
-
-## Gui Game using sdl
-
-```bash
-// make sure sdl2 is installed on your system. to install
-sudo apt install sdl2-dev
-
-// After that
-cd gui-game-sdl
-g++ main.cpp comp/*.cpp -lsdl2 && ./a.out
-
-// or
-shopt -s globstar # Enable globstar for recursive globbing
-g++ *.cpp **/*.cpp -lncurses && ./a.out
-
-// Alternatively, explicitly list subdirectories:
-g++ *.cpp comp/*.cpp -lncurses && ./a.out
-
-```

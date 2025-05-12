@@ -9,12 +9,10 @@ class Game {
         Game();
         ~Game();
         
-        void init();
         void render();
-    
     private:
         SDL_Window* window;
         SDL_Renderer* renderer;
-        bool running;
+        bool isRunning;
 };
 #endif

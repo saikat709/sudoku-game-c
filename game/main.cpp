@@ -81,7 +81,7 @@ void undoMove(){
 }
 
 UserMove getUserInput(){
-    printSudokuGrid(solvedGrid);
+    // printSudokuGrid(solvedGrid);
 
     UserMove userInput;
 
