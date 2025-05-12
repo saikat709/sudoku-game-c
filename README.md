@@ -2,22 +2,21 @@
 
 We can use either gcc or g++ for a .c file.  must use g++ to compile .cpp code..
 
-## Files in the root dir
-```bash
-g++ solve-sudoku.cpp && ./a.out
-g++ check-terminal-command.c && ./a.out
-g++ sudoku-generator.cpp && ./a.out.
-gcc check/check-coloring-output.c && ./a.out
-
-```
-
 ## Terminal Game 
 ```bash
-cd terminal-game
+cd game
 g++ main.cpp sudoku.cpp && ./a.out
 // or
 g++ *.cpp && ./a.out
 
+```
+
+## Files in the root dir
+```bash
+g++ solve-sudoku.cpp && ./a.out
+g++ sudoku-generator.cpp && ./a.out.
+gcc check/check-coloring-output.c && ./a.out
+g++ check/check-terminal-command.c && ./a.out
 ```
 
 ### Samples
